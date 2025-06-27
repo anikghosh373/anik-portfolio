@@ -1,91 +1,303 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Anik's Web Journey</title>
-    <style>
-        body {
-            background-color: #f0f4f8;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-    
-        h1 {
-            color: #0077cc;
-        }
-    
-        ul {
-            background: #fff;
-            padding: 10px;
-            
-            border-radius: 8px;
-            box-shadow: 2px 2px 8px rgba(0.7, 0.9, 10, 0.1);
-        }
-    
-        a {
-            color: #cc0066;
-            text-decoration: none;
-        }
-    
-        a:hover {
-            text-decoration: underline;
-        }
-    
-        img {
-            border-radius: 10px;
-            margin-top: 10px;
-        }
-        header, footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #e3eaf1;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-section {
-  margin-bottom: 20px;
-}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anik Ghosh | Portfolio</title>
 
-    
-        </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <style>
+        :root {
+            --clr-bg: #f6f9fc;
+            --clr-primary: #0b5ed7;
+            --clr-secondary: #6c63ff;
+            --clr-text: #212529;
+            --clr-accent: #ff4081;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--clr-bg);
+            color: var(--clr-text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ---------- Navbar ---------- */
+        nav {
+            background: #ffffff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--clr-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--clr-text);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--clr-primary);
+        }
+
+        /* ---------- Hero ---------- */
+        header.hero {
+            background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary));
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+        }
+
+        /* ---------- Section universal ---------- */
+        section {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: var(--clr-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* ---------- About ---------- */
+        #about p {
+            font-size: 1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ---------- Skills ---------- */
+        #skills ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        #skills li {
+            background: #ffffff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            font-weight: 500;
+        }
+
+        /* ---------- Projects ---------- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-card img {
+            width: 100%;
+            object-fit: cover;
+            height: 160px;
+        }
+
+        .project-card .content {
+            padding: 1rem;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--clr-primary);
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background 0.25s ease;
+        }
+
+        .btn:hover {
+            background: var(--clr-secondary);
+        }
+
+        /* ---------- Contact ---------- */
+        #contact p {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            margin-top: auto;
+            background: #ffffff;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        /* ---------- Responsive tweaks ---------- */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <h1>👨‍💻 Anik Ghosh</h1>
-        <p>BCA Student | CAT Aspirant | Aspiring Content Creator</p>
+    <!-- ========== Navbar ========== -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Anik</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== Hero Section ========== -->
+    <header class="hero">
+        <h1>👋 Hi, I'm Anik Ghosh</h1>
+        <p>BCA Final‑Year Student | CAT Aspirant | Aspiring Full‑Stack Developer & Content Creator</p>
     </header>
 
-    <section>
+    <!-- ========== About Section ========== -->
+    <section id="about">
         <h2>About Me</h2>
-        <p>Hi! I’m currently in my 5th semester of BCA. I’m learning web dev, and
-            planning to start creating productivity + gym life content.</p>
+        <p>
+            I’m currently in my 5th semester of BCA at Adamas University. Passionate about
+            web technologies, productivity, and fitness, I create content to document my
+            journey while preparing for the CAT exam.
+        </p>
     </section>
 
-    <section>
+    <!-- ========== Skills Section ========== -->
+    <section id="skills">
         <h2>Skills</h2>
         <ul>
             <li>C (Intermediate)</li>
             <li>Python (Basics)</li>
-            <li>HTML & CSS (Learning)</li>
+            <li>HTML & CSS</li>
+            <li>Git & GitHub</li>
+            <li>Content Creation</li>
         </ul>
     </section>
 
-    <section>
+    <!-- ========== Projects Section ========== -->
+    <section id="projects">
         <h2>Projects</h2>
-        <p>Coming soon...</p>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <img src="https://placehold.co/600x400?text=Project+1" alt="Project screenshot" />
+                <div class="content">
+                    <h3>Portfolio Website</h3>
+                    <p>A responsive personal portfolio built with HTML & CSS, featuring my projects and blog posts.</p>
+                    <a class="btn" href="https://anikghosh373.github.io/anik-portfolio/" target="_blank">Live</a>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="project-card">
+                <img src="https://placehold.co/600x400?text=Project+2" alt="Project screenshot" />
+                <div class="content">
+                    <h3>Gym Progress Tracker</h3>
+                    <p>Simple web app to track workouts and visualize progress over time (HTML, CSS, JavaScript).</p>
+                    <a class="btn" href="#" target="_blank">Coming Soon</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:anikghosh373@gmail.com">anikghosh373@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/anik-ghosh-60a067292" target="_blank">View Profile</a></p>
+    <!-- ========== Contact Section ========== -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Feel free to reach out for collaboration or gigs 👇</p>
+        <p>
+            <a class="btn" href="mailto:anikghosh373@gmail.com">Email Me</a>
+            <a class="btn" href="https://www.linkedin.com/in/anik-ghosh-60a067292" target="_blank">LinkedIn</a>
+        </p>
     </section>
 
+    <!-- ========== Footer ========== -->
     <footer>
-        <p>© 2025 Anik Ghosh. All rights reserved.</p>
+        © <span id="year"></span> Anik Ghosh. All rights reserved.
     </footer>
+
+    <script>
+        // Update footer year dynamically
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
-  
 
 </html>
